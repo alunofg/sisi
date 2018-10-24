@@ -49,7 +49,7 @@ class UsersController extends Controller
     {
         $user = $this->service->getUser(true);
         return response()->json(['data' => $user]);
-    }
+    }  
 
 
     /**

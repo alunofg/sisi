@@ -1,11 +1,17 @@
+import { AclRedirection } from './app.resolve';
+import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NotifierModule } from 'angular-notifier';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { from } from 'rxjs';
+
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -14,15 +20,16 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
-import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
+import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
-import { OccurenceService } from './services/occurence.service';
+import { OccurrenceService } from './services/occurrence.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -51,9 +58,6 @@ import {
   MatProgressSpinnerModule
 } from '@angular/material';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,10 +65,10 @@ import {
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent,
+    FormOccurrenceComponent,
     ListUserComponent,
-    ListOccurenceComponent
-  ],
+    ListOccurrenceComponent,
+    FormComplaintComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -96,12 +100,18 @@ import {
     MatProgressSpinnerModule,
     NotifierModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    CommonModule,
+    AgmCoreModule.forRoot({ // Key
+      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
+    })
   ],
   providers: [
     AuthGuardService,
     UserService,
-    OccurenceService,
+    AclService,
+    AclRedirection,
+    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

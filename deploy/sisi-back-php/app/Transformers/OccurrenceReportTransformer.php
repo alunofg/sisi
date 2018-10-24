@@ -116,5 +116,7 @@ class OccurrenceReportTransformer extends TransformerAbstract
                 ];
             }
         }
+
+        return $occurrenceObjects;
     }
 }
