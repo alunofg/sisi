@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RegisterProvider {
-  url:string = 'http://104.131.99.239:5050/';
+  url:string = "http://209.97.147.27:81/";
 
   constructor(public http: HttpClient) {
 

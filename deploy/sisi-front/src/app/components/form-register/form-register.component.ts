@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
- // import { AlertService } from '../services/alert.service';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-register',
@@ -27,7 +27,7 @@ export class FormRegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    // private alertService: AlertService
+    private notifier: NotifyService
     ) { }
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class FormRegisterComponent implements OnInit {
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      terms: ['', [Validators.required]],
       status: 'ATIVO'
     });
   }
@@ -52,7 +53,7 @@ export class FormRegisterComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
-          alert('Erro ao tentar cadastrar, confira se os campos foram preenchidos corretamente.');
+          this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
           return;
         }
 
@@ -61,14 +62,11 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Cadastro realizado com sucesso!');
+
                   this.router.navigate(['']);
-                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  // this.alertService.error(error);
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar cadastrar sua conta.');
                 });
   }
 }

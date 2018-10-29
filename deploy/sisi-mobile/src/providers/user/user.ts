@@ -7,7 +7,7 @@ import { IUser } from '../../interfaces/IUser';
 @Injectable()
 export class UserProvider {
 
-  url:string= 'http://104.131.99.239:5050/';
+  url:string= "http://209.97.147.27:81/";
   headers:any;
 
   constructor(public http: HttpClient) {
@@ -21,7 +21,7 @@ export class UserProvider {
   }
 
   getUser(){
-    
+
   }
 
   }

@@ -1,16 +1,15 @@
-import { FeedPage } from './../feed/feed';
-
+import { OccurrenceCardPage }               from '../occurrenceCard/occurrenceCard';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation'
-import { LoginPage } from '../login/login';
-import { AuthProvider } from "../../providers/auth/auth";
+import { NavController }                    from 'ionic-angular';
+import { Geolocation }                      from '@ionic-native/geolocation';
+import { LoginPage }                        from '../login/login';
+import { AuthProvider }                     from "../../providers/auth/auth";
 
 declare let google: any;
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
@@ -41,7 +40,7 @@ export class HomePage {
       const options = {
         center: position,
         zoom: 18,
-        myTipyId: 'roadmap'
+        myTipyId: 'roadmap',
       };
 
       const map = new google.maps.Map(this.map.nativeElement, options);
@@ -49,7 +48,7 @@ export class HomePage {
         animation: google.maps.Animation.DROP,
         position: position,
         map: map,
-        title: 'Você está aqui!'
+        title: 'Você está aqui!',
       });
 
 
@@ -57,12 +56,8 @@ export class HomePage {
 
   }
 
-  logOut() {
-    this.navCtrl.setRoot(LoginPage)
-  }
-
-  goToFeedPage() {
-    this.navCtrl.push(FeedPage);
+  goToOccurrenceCardPage() {
+    this.navCtrl.push(OccurrenceCardPage);
   }
 }
 

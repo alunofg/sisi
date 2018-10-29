@@ -31,6 +31,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\OccurrenceObjectRepository::class, \App\Repositories\OccurrenceObjectRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\InvolvedPersonRepository::class, \App\Repositories\InvolvedPersonRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\LogsRepository::class, \App\Repositories\LogsRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\IrregularityTypesRepository::class, \App\Repositories\IrregularityTypesRepositoryEloquent::class);
         //:end-bindings:
     }
 }

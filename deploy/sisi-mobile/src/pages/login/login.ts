@@ -1,12 +1,12 @@
-import { TabsPage } from './../tabs/tabs';
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { TabsPage }                                                                     from './../tabs/tabs';
+import { Component }                                                                    from '@angular/core';
+import { FormBuilder, Validators }                                                      from '@angular/forms';
 import { AlertController, App, LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
-import { RegisterPage } from '../register/register';
-import { AuthProvider } from '../../providers/auth/auth';
-import { UserProvider } from '../../providers/user/user';
-import { IUser } from '../../interfaces/IUser'
+import { ToastController }                                                              from 'ionic-angular';
+import { RegisterPage }                                                                 from '../register/register';
+import { AuthProvider }                                                                 from '../../providers/auth/auth';
+import { UserProvider }                                                                 from '../../providers/user/user';
+import { IUser }                                                                        from '../../interfaces/IUser'
 
 @IonicPage()
 @Component({
@@ -69,7 +69,7 @@ export class LoginPage {
       });
   }
 
-  goToRegisterPage() {
+    goToRegisterPage() {
     this.navCtrl.push(RegisterPage);
   }
 }

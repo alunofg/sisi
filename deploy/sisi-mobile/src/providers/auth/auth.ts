@@ -4,7 +4,7 @@ import {HttpService} from "../../http-service/http.service";
 
 @Injectable()
 export class AuthProvider {
-    url: string = "http://104.131.99.239:5050/";
+    url: string = "http://209.97.147.27:81/";
     headers: any;
 
     constructor(
@@ -29,7 +29,7 @@ export class AuthProvider {
             password: password,
             grant_type: 'password',
             client_id: 2,
-            client_secret: 'g422Ugg1VaW9UcXaqrUKe6hJNb7tETtViB9AtY4X'
+            client_secret: 'j2N63IeAWEQme4FHcx7z9eQVX5ljVTBO27mp5nbe'
         });
     }
 
