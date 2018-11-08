@@ -2,8 +2,11 @@ export  const ABILITIES = {
     DEFAULT: 'default_content',
     USER_CONTENT: 'user_content',
     ADD_OCCURRENCE: 'add_occurrence',
+    ADD_IRREGULARITY: 'add_irregularity',
     LIST_USER: 'list_user',
-    LIST_OCCURRENCE: 'list_occurrence'
+    LIST_OCCURRENCE: 'list_occurrence',
+    LIST_IRREGULARITY: 'list_irregularity',
+    REGISTER_FUNCTIONARY: 'register_functionary'
   };
 export  const ROLES = {
     '1': 'user',

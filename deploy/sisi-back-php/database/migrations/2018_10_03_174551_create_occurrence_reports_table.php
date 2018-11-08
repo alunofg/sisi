@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -19,7 +18,7 @@ class CreateOccurrenceReportsTable extends Migration
             $table->increments('id');
 
             $table->string('title');
-            $table->string('story');
+            $table->text('story');
             $table->date('occurrence_date');
             $table->time('occurrence_time');
             $table->string('coordinates');

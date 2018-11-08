@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\OccurrenceTypeRepository;
+use App\Repositories\IrregularityTypesRepository;
 use App\Services\Traits\CrudMethods;
 
 /**
@@ -19,16 +19,16 @@ class IrregularityTypesService extends AppService
     }
 
     /**
-     * @var IrregularityTypesService $repository
+     * @var IrregularityTypesRepository $repository
      */
     protected $repository;
 
     /**
      * RoleService constructor.
      *
-     * @param IrregularityTypesService $repository
+     * @param IrregularityTypesRepository $repository
      */
-    public function __construct(IrregularityTypesService $repository)
+    public function __construct(IrregularityTypesRepository $repository)
     {
         $this->repository = $repository;
     }

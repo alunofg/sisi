@@ -35,7 +35,7 @@ class IrregularityTypesController extends Controller
     public function __construct(IrregularityTypesService $service,
                                 IrregularityTypesValidator $validator)
     {
-        $this->service = $service;
+        $this->service   = $service;
         $this->validator = $validator;
     }
 

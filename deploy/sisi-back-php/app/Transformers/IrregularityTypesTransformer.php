@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Entities\IrregularityTypes;
+use App\Entities\IrregularityType;
 
 /**
  * Class IrregularityTypesTransformer.
@@ -13,13 +13,13 @@ use App\Entities\IrregularityTypes;
 class IrregularityTypesTransformer extends TransformerAbstract
 {
     /**
-     * Transform the IrregularityTypes entity.
+     * Transform the IrregularityType entity.
      *
-     * @param \App\Entities\IrregularityTypes $model
+     * @param \App\Entities\IrregularityType $model
      *
      * @return array
      */
-    public function transform(IrregularityTypes $model)
+    public function transform(IrregularityType $model)
     {
         return [
             'id'            => (int) $model->id,

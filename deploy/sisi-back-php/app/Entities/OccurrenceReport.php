@@ -23,6 +23,7 @@ class OccurrenceReport extends AppModel
         'occurrence_time',
         'coordinates',
         'police_report',
+        'police_report_code',
         'estimated_loss',
         'status',
         'confidential',
@@ -105,13 +106,18 @@ class OccurrenceReport extends AppModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
+
     public function logs()
     {
-        return $this->morphMany(Logs::class, 'loggable');
+        return $this->morphMany(AuditLog::class, 'loggable');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
 
     public function attachments()
     {
-        return $this->morphMany(Attachments::class, 'attachable');
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }

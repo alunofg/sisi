@@ -10,7 +10,6 @@ import { AgmCoreModule } from '@agm/core';
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
 
-
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,15 +19,19 @@ import { FormRegisterComponent } from './components/form-register/form-register.
 import { HomeComponent } from './components/home/home.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
-import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
+import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
+import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
+import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
 import { OccurrenceService } from './services/occurrence.service';
+import { IrregularityService } from './services/irregularity.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -37,6 +40,8 @@ import {
   MatInputModule,
   MatAutocompleteModule
 } from '@angular/material';
+import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
+
 
 
 @NgModule({
@@ -49,8 +54,13 @@ import {
     FormOccurrenceComponent,
     ListUserComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent,
-    ListIrregularitiesComponent],
+    FormIrregularityComponent,
+    ListIrregularitiesComponent,
+    MenuHeaderComponent,
+    ViewOccurrenceComponent,
+    FormFunctionaryComponent,
+    ViewIrregularityComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -71,9 +81,10 @@ import {
   providers: [
     AuthGuardService,
     UserService,
+    OccurrenceService,
+    IrregularityService,
     AclService,
     AclRedirection,
-    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

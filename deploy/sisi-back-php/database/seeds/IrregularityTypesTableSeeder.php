@@ -18,11 +18,10 @@ class IrregularityTypesTableSeeder extends Seeder
             ['name' => 'Poda',                      'description' => 'Irregularidades que envolvem necessidade de podas de arvores e plantas em geral.'],
             ['name' => 'Poluição',                  'description' => 'Irregualridades que põe em risco a sáude dos estudantes e poluições em geral'],
             ['name' => 'Outros',                    'description' => 'Qualquer outra irregularidade que não se encaixe nas outras opções'],
-
         ];
 
         foreach ($types as $type) {
-            \App\Entities\IrregularityTypes::create($type);
+            \App\Entities\IrregularityType::create($type);
         }
 
     }
