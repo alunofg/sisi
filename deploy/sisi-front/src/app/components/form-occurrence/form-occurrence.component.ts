@@ -18,6 +18,11 @@ export class FormOccurrenceComponent implements OnInit {
   loading = false;
   submitted = false;
   jQuery: any;
+  today = new Date().toJSON().split('T')[0];
+  date = new Date();
+  minDate: string;
+  // Two Way Databind - passando as cordenadas para o form.
+  cord;
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -27,12 +32,13 @@ export class FormOccurrenceComponent implements OnInit {
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
-  locationChosen = false;
+  locationChosen = true;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
+    this.cord = this.lat.toFixed(5) + ',' + this.lng.toFixed(5); // convertendo para string e concatenando cordenadas do mapa
   }
 
   constructor(
@@ -40,18 +46,23 @@ export class FormOccurrenceComponent implements OnInit {
     private router: Router,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private notifier: NotifyService
-
-  ) { }
+    private notifier: NotifyService,
+  ) {}
 
   ngOnInit() {
 
+    // definindo valor default para o mapa
+    if (this.cord === undefined) {
+      this.cord = '-8.05241,-34.94523';
+    }
+    this.date.setFullYear(this.date.getFullYear() - 1);
+    this.minDate = this.date.toJSON().split('T')[0];
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
       occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
-      coordinates: '41.40338, 2.17403',
+      coordinates: [this.cord, Validators.required],
       police_report: ['', Validators.required],
       estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
@@ -90,17 +101,17 @@ export class FormOccurrenceComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Registro de ocorrência realizado com sucesso!');
+                  this.notifier.show('success', 'Registro de ocorrência realizado com sucesso!');
                   this.router.navigate(['home']);
                 },
                 error => {
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
+                  this.notifier.show('error', 'Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });
   }
 
   confirmInvolved() {
-      alert('Envolvido Adicionado');
+      this.notifier.show('success', 'Envolvido Adicionado');
   }
 
 

@@ -1,0 +1,47 @@
+<div>
+  <div class="container-fluid margin-top-sisi">
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-md-6">
+        <h2> Usuários </h2>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+    <br>
+
+    <div class="row row-table">
+
+      <div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+            <thead class="thead-sisi">
+                <tr>
+                  <th scope="col" class="padding-thead-sisi">#</th>
+                  <th scope="col" class="padding-thead-sisi">Nome</th>
+                  <th scope="col" class="padding-thead-sisi">Cpf</th>
+                  <th scope="col" class="padding-thead-sisi">Email</th>
+                  <th scope="col" class="padding-thead-sisi">Genêro</th>
+                  <th scope="col" class="padding-thead-sisi">Etnia</th>
+                  <th scope="col" class="padding-thead-sisi">Autorização</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr class="list" *ngFor="let user of data">
+                <th scope="row">{{ user.id }}</th>
+                <td><i class=" large material-icons">account_circle</i>{{ user.name }}</td>
+                <td>{{ user.cpf }}</td>
+                <td><i class=" large material-icons">email</i>{{ user.email }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.skin_color }}</td>
+                <td><i class=" large material-icons">work</i>{{ user.role.name }}</td>
+              </tr>
+            </tbody>
+        </table>
+        <button class="buttom-mobile" (click)=nextPage()>Próximo</button>
+        <button class="buttom-mobile" (click)=previousPage()>Anterior</button>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+

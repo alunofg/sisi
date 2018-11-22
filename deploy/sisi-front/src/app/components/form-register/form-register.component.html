@@ -5,7 +5,7 @@
           <div class="card-header">
             <h3>Formulário de Cadastro</h3>
           </div>
-          <form class="card-body form-default-sisi" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <form class="card-body form-default-sisi" [formGroup]="registerForm" (submit)="onSubmit()">
               <div class="form-row">
                 <div class="form-group col-md-12">
                   <label for="name">Nome Completo</label>
@@ -91,8 +91,8 @@
                         data-toggle="tooltip"
                         title="Escolha a data através das setas ao lado"
                         type="date"
-                        max="2002-12-31"
-                        min="1930-01-01"
+                        max={{maxDate}}
+                        min={{minDate}}
                         class="form-control"
                         formControlName="birthdate"
                         [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }"
@@ -209,12 +209,12 @@
                         <div *ngIf="f.terms.errors.required">É necessário aceitar os termos de uso*</div>
                       </div>
                   </div>
-                </div><br>
-
+                </div>
+              </div>
+              <div class="form-row">
                 <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
                 <a  style="margin-top: 20px;" routerLink="">Já possui conta?</a>
-              </div>
-
+            </div>
             </form>
           </div>
       </div>

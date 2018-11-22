@@ -20,6 +20,9 @@ export class ViewOccurrenceComponent implements OnInit {
   public status = { 'loading': true};
   public idOccurrence: number;
   public titleOccurrence: string;
+  today = new Date().toJSON().split('T')[0];
+  date = new Date();
+  minDate: string;
 
   formOccurrence: FormGroup;
   loading = false;
@@ -34,12 +37,19 @@ export class ViewOccurrenceComponent implements OnInit {
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
-  locationChosen = false;
+  locationChosen = true;
+
+   // Variaveis de conversão das cordenadas do mapa
+   coordString: string;
+   resultado: string[];
+   numberLAT;
+   numberLNG;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
+    this.coordString = this.lat.toFixed(5) + ',' + this.lng.toFixed(5);
   }
 
   constructor(
@@ -53,6 +63,8 @@ export class ViewOccurrenceComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+      this.date.setFullYear(this.date.getFullYear() - 1);
+      this.minDate = this.date.toJSON().split('T')[0];
       this.route.params.subscribe(
         (params: Params) => {
           this.occurrenceService.getOccurrencesID(params.id)
@@ -60,12 +72,19 @@ export class ViewOccurrenceComponent implements OnInit {
             this.occurrence = occurrence.data;
             this.idOccurrence = occurrence.data.id;
             this.titleOccurrence = occurrence.data.title;
+
+             // separando as coordenadas
+            this.coordString = occurrence.data.coordinates;
+            this.resultado = this.coordString.split(',');
+            this.lat = +this.resultado[0];
+            this.lng = +this.resultado[1];
+
             this.formOccurrence = this.formBuilder.group({
               title: [occurrence.data.title, [ Validators.required, Validators.pattern(this.titlePattern)]],
               story: [occurrence.data.story, [Validators.required, Validators.pattern(this.storyPattern)]],
               occurrence_date: [occurrence.data.occurrence_date, Validators.required],
               occurrence_time: [occurrence.data.occurrence_time, Validators.required],
-              coordinates: '41.40338, 2.17403',
+              coordinates: [this.coordString, Validators.required],
               police_report: [occurrence.data.police_report, Validators.required],
               estimated_loss: ['345'],
               occurrence_type_id: [occurrence.data.occurrence_type.id, Validators.required],

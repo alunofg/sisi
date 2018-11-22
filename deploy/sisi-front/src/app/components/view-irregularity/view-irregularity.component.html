@@ -3,7 +3,7 @@
     <div class="form-default-sisi row">
       <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
-          <h3>Cadastro de Irregularidades</h3>
+          <h3>Acompanhar Irregularidade</h3>
         </div>
 
       <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
@@ -54,9 +54,14 @@
               <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
             </div>
           </div>
-        </div>
 
-        <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
+          <div class="form-group col-md-6" style="display: none;">
+            <label for="title">coordinates</label>
+            <input data-toggle="tooltip" type="text" class="form-control"
+              placeholder="Título da irregularidade" formControlName="coordinates" [(ngModel)]="coordString" />
+          </div>
+
+        </div>
 
         <div class="form-row">
           <div class="form-group col-md-12">
@@ -88,7 +93,7 @@
               </div>
           </div>
         <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerDraggable]="true"></agm-marker>
         </agm-map>
       </div>
     </div> <!-- div background  -->

@@ -1,0 +1,60 @@
+page-feed {
+  .toolbar-background-md {
+    border-color: #b2b2b2;
+    background: #222;
+  }
+  .toolbar-title-md {
+    color: #FFFFFF;
+  }
+
+  .button-md {
+    border-radius: 2px;
+    overflow: hidden;
+    height: 3.3rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #990000;
+  }
+
+  .bg-image {
+    background-image: url('../assets/img/background.png');
+    background-repeat: repeat;
+  
+    background-size: extends;
+  }
+
+  .button-md:hover:not(.disable-hover) {
+    background-color: #990000;
+  }
+
+  .button-md.activated {
+
+    background-color: #990000;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.14), 0 3px 5px rgba(0, 0, 0, 0.21), 0 0 0 0 transparent;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.14), 0 3px 5px rgba(0, 0, 0, 0.21), 0 0 0 0 transparent;
+  }
+
+  .label-md-primary,
+  .item-input .label-md-primary,
+  .item-select .label-md-primary,
+  .item-datetime .label-md-primary {
+    color: #222;
+  }
+
+  .checkbox-md .checkbox-checked {
+    border-color: #990000;
+    background-color:  #990000;
+  }
+
+  .btn-registrar {
+    border-radius: 20px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-right: 3%;
+  }
+  .css-card {
+    border-radius: 10px;
+  }
+}
