@@ -1,7 +1,0 @@
-{
-  "name": "projectsisi",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
